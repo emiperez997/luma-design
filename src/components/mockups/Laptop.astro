@@ -1,0 +1,40 @@
+---
+import Plant from './Plant.astro';
+---
+<div class="laptop" aria-hidden="true">
+  <div class="laptop__lid">
+    <div class="laptop__screen">
+      <div class="lp-nav">
+        <span class="lp-brand"><i></i>Luma Digital</span>
+        <span class="lp-links"><b>Inicio</b><b>Servicios</b><b>Contacto</b></span>
+      </div>
+      <div class="lp-hero">
+        <div>
+          <p class="lp-title">Tu idea<br /><strong>también merece<br />una gran presencia.</strong></p>
+          <p class="lp-lines"><i></i><i></i></p>
+          <span class="lp-btn">Conocé más</span>
+        </div>
+        <div class="lp-photo"><Plant /></div>
+      </div>
+    </div>
+  </div>
+  <div class="laptop__base"></div>
+</div>
+
+<style>
+  .laptop { width: 26em; }
+  .laptop__lid { background: #1d1f24; border-radius: .9em .9em .2em .2em; padding: .75em .75em 1.1em; box-shadow: 0 1.2em 2.4em -1em rgba(28, 43, 75, .35); }
+  .laptop__screen { background: #fbfcfe; border-radius: .2em; aspect-ratio: 16 / 10; overflow: hidden; padding: .8em 1.1em; display: flex; flex-direction: column; }
+  .laptop__base { height: .8em; margin: 0 -1.6em; background: linear-gradient(#e5e8ec, #b9bec6); border-radius: 0 0 1.2em 1.2em; position: relative; }
+  .laptop__base::before { content: ''; position: absolute; left: 42%; right: 42%; top: 0; height: .3em; background: #a9aeb6; border-radius: 0 0 .4em .4em; }
+  .lp-nav { display: flex; justify-content: space-between; align-items: center; font-size: .42em; color: var(--ink); }
+  .lp-brand { display: flex; align-items: center; gap: .4em; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+  .lp-brand i { width: 1.4em; height: 1.4em; border-radius: 50%; background: linear-gradient(160deg, #dce6f4 50%, var(--navy) 50%); }
+  .lp-links { display: flex; gap: 1.4em; } .lp-links b { font-weight: 500; }
+  .lp-hero { flex: 1; display: grid; grid-template-columns: 1.2fr 1fr; gap: 1em; align-items: center; }
+  .lp-title { font-family: var(--font-serif); font-size: .95em; line-height: 1.15; color: var(--ink); margin: 0 0 .5em; }
+  .lp-title strong { font-weight: 600; }
+  .lp-lines { margin: 0 0 .7em; display: grid; gap: .25em; } .lp-lines i { height: .22em; background: #d7dce5; border-radius: 1em; width: 90%; } .lp-lines i + i { width: 70%; }
+  .lp-btn { display: inline-block; font-size: .4em; background: var(--navy); color: #fff; padding: .6em 1.6em; border-radius: 2em; }
+  .lp-photo { height: 85%; border-radius: .2em; overflow: hidden; }
+</style>

@@ -1,0 +1,40 @@
+---
+import { site } from '../data/site';
+import Icon from './Icon.astro';
+import SectionHeading from './SectionHeading.astro';
+const { services } = site;
+---
+<section class="section services" id="servicios" aria-labelledby="servicios-title">
+  <div class="container">
+    <div class="services__head">
+      <SectionHeading number="02" eyebrow={services.eyebrow} title={services.title} id="servicios-title" />
+      <p class="services__lead">{services.lead}</p>
+    </div>
+    <ul class="cards">
+      {services.items.map((s) => (
+        <li class="card">
+          <span class="icon-bubble"><Icon name={s.icon} size={26} stroke={1.4} /></span>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+          <a class="link-arrow" href="#contacto">{services.linkLabel} <span class="sr-only">sobre {s.title}</span><Icon name="arrow" size={15} /></a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .services { background: var(--bg); overflow: hidden; }
+  .services::after { content: ''; position: absolute; width: 9rem; aspect-ratio: 1; border-radius: 50%; background: var(--blob); right: -2.5rem; top: 1.5rem; opacity: .7; }
+  .services__head { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: end; margin-bottom: 2.4rem; }
+  .services__head :global(.sh__title) { max-width: 11ch; }
+  .services__lead { color: var(--muted); max-width: 25rem; margin: 0 0 .4rem; }
+  .cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .card { background: var(--surface); border-radius: var(--radius); padding: 1.6rem 1.4rem 1.5rem; box-shadow: 0 1px 2px rgba(28, 43, 75, .04), 0 8px 24px -16px rgba(28, 43, 75, .18); display: flex; flex-direction: column; }
+  .card .icon-bubble { margin-bottom: 1.4rem; }
+  .card h3 { font-size: 1.1rem; margin: 0 0 .7rem; }
+  .card p { color: var(--muted); font-size: .9rem; margin-bottom: 1.3rem; }
+  .card .link-arrow { margin-top: auto; }
+  @media (max-width: 980px) { .cards { grid-template-columns: repeat(2, 1fr); } .services__head { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .cards { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,37 @@
+---
+import { site } from '../data/site';
+import Icon from './Icon.astro';
+import SectionHeading from './SectionHeading.astro';
+const { process } = site;
+---
+<section class="section process" id="proceso" aria-labelledby="process-title">
+  <div class="container">
+    <SectionHeading number="05" title={process.title} lead={process.lead} id="process-title" />
+    <ol class="steps">
+      {process.steps.map((s, i) => (
+        <li class="step">
+          <div class="step__top">
+            <span class="step__num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="icon-bubble step__icon"><Icon name={s.icon} size={30} stroke={1.3} /></span>
+          </div>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .process { background: var(--bg); }
+  .steps { list-style: none; padding: 0; margin: 3rem 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .step { position: relative; }
+  .step__top { position: relative; height: 4.6rem; margin-bottom: 1.1rem; }
+  .step__icon { position: absolute; left: 1.9rem; top: 0; width: 4.4rem; height: 4.4rem; background: var(--bg-2); }
+  .step__num { position: absolute; left: 0; bottom: -.3rem; z-index: 1; font-family: var(--font-serif); font-size: .85rem; background: var(--surface); border-radius: 999px; padding: .15rem .5rem; box-shadow: 0 2px 6px -2px rgba(28,43,75,.2); }
+  .step:not(:last-child) .step__top::after { content: ''; position: absolute; left: 7.8rem; right: -1rem; top: 50%; height: 1px; background: var(--line); }
+  .step h3 { font-family: var(--font-sans); font-size: .95rem; margin: 0 0 .5rem; }
+  .step p { color: var(--muted); font-size: .88rem; margin: 0; max-width: 17rem; }
+  @media (max-width: 900px) { .steps { grid-template-columns: repeat(2, 1fr); } .step .step__top::after { display: none; } }
+  @media (max-width: 480px) { .steps { grid-template-columns: 1fr; } }
+</style>

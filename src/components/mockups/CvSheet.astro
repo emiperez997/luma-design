@@ -1,0 +1,34 @@
+---
+interface Props { name?: string; role?: string }
+const { name = 'Martina Juárez', role = 'Diseñadora UX/UI' } = Astro.props;
+const blocks = ['Perfil', 'Experiencia', 'Formación', 'Habilidades'];
+---
+<div class="cv" aria-hidden="true">
+  <aside class="cv__side">
+    <span class="cv__mono">{name.split(' ').map((w) => w[0]).join('')}</span>
+    {[0, 1, 2].map(() => (<div class="cv__sgroup"><i></i><i></i><i></i></div>))}
+  </aside>
+  <div class="cv__main">
+    <p class="cv__name">{name}</p>
+    <p class="cv__role">{role}</p>
+    {blocks.map((b) => (
+      <div class="cv__block">
+        <p class="cv__h">{b}</p>
+        <i></i><i></i><i class="short"></i>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .cv { width: 11em; aspect-ratio: 1 / 1.3; display: grid; grid-template-columns: 30% 1fr; background: #fff; border-radius: .2em; overflow: hidden; box-shadow: 0 1em 2em -.8em rgba(28, 43, 75, .4); transform: rotate(-4deg); }
+  .cv__side { background: var(--navy); padding: .9em .5em; display: grid; align-content: start; gap: .9em; }
+  .cv__mono { width: 1.8em; height: 1.8em; border-radius: 50%; border: 1px solid rgba(255,255,255,.4); color: #fff; font-family: var(--font-serif); font-size: .5em; display: grid; place-items: center; margin: 0 auto; transform: scale(1.6); }
+  .cv__sgroup { display: grid; gap: .22em; } .cv__sgroup i { height: .14em; background: rgba(255,255,255,.35); border-radius: 1em; } .cv__sgroup i:nth-child(2) { width: 75%; }
+  .cv__main { padding: .9em .75em; }
+  .cv__name { font-family: var(--font-serif); font-weight: 600; font-size: .78em; color: var(--ink); margin: 0; }
+  .cv__role { font-size: .34em; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: .2em 0 .7em; }
+  .cv__block { display: grid; gap: .18em; margin-bottom: .55em; }
+  .cv__h { font-size: .38em; font-weight: 700; color: var(--ink); margin: 0 0 .15em; }
+  .cv__block i { height: .13em; background: #d7dce5; border-radius: 1em; } .cv__block i.short { width: 60%; }
+</style>

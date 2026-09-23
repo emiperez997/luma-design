@@ -1,0 +1,25 @@
+---
+interface Props { title?: string; subtitle?: string }
+const { title = 'Café', subtitle = 'con alma' } = Astro.props;
+---
+<div class="flyer" aria-hidden="true">
+  <p class="fl-title">{title}<span>{subtitle}</span></p>
+  <p class="fl-sub">Granos seleccionados · tostado local</p>
+  <svg class="fl-cup" viewBox="0 0 100 70">
+    <ellipse cx="50" cy="58" rx="46" ry="10" fill="#f5f2ee" />
+    <ellipse cx="50" cy="56" rx="30" ry="6" fill="#e2dcd4" />
+    <path d="M22 26h56c0 18-10 30-28 30S22 44 22 26z" fill="#fbfaf8" />
+    <path d="M78 32c10 0 10 14-2 14" fill="none" stroke="#fbfaf8" stroke-width="4" />
+    <ellipse cx="50" cy="26" rx="28" ry="7" fill="#8a5a36" />
+    <path d="M42 25c4-3 12-3 16 0-4 3-12 3-16 0z" fill="#e9cfae" opacity=".8" />
+    <circle cx="14" cy="52" r="3" fill="#3b2415" /><circle cx="86" cy="60" r="2.6" fill="#3b2415" />
+  </svg>
+</div>
+
+<style>
+  .flyer { width: 10em; aspect-ratio: 3 / 4; background: radial-gradient(circle at 50% 30%, #5a3a26, #2e1c12 75%); border-radius: .2em; padding: 1em .9em; display: flex; flex-direction: column; align-items: center; text-align: center; color: #f4e9dc; box-shadow: 0 1em 2em -.8em rgba(40, 25, 15, .55); }
+  .fl-title { font-family: var(--font-serif); text-transform: uppercase; font-size: 1.25em; line-height: 1; letter-spacing: .04em; margin: 0; }
+  .fl-title span { display: block; font-size: .62em; margin-top: .15em; }
+  .fl-sub { font-size: .32em; opacity: .75; letter-spacing: .1em; margin: .6em 0 0; }
+  .fl-cup { margin-top: auto; width: 88%; }
+</style>

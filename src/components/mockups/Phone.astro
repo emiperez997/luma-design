@@ -1,0 +1,23 @@
+---
+import Plant from './Plant.astro';
+---
+<div class="phone" aria-hidden="true">
+  <div class="phone__screen">
+    <span class="ph-notch"></span>
+    <p class="ph-title">Ideas<br />que conectan</p>
+    <div class="ph-photo"><Plant /></div>
+    <div class="ph-foot"><i></i><span></span></div>
+    <div class="ph-bar"><b></b><b></b><b></b><b></b></div>
+  </div>
+</div>
+
+<style>
+  .phone { width: 7.5em; aspect-ratio: 9 / 18; background: #16181c; border-radius: 1.3em; padding: .35em; box-shadow: 0 1em 2em -.8em rgba(28, 43, 75, .45); transform: rotate(4deg); }
+  .phone__screen { height: 100%; background: #fff; border-radius: 1em; padding: 1.1em .8em .6em; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+  .ph-notch { position: absolute; top: .3em; left: 50%; translate: -50%; width: 2.2em; height: .45em; background: #16181c; border-radius: 1em; }
+  .ph-title { font-family: var(--font-serif); font-weight: 600; color: var(--ink); font-size: .78em; line-height: 1.1; margin: 0 0 .5em; }
+  .ph-photo { flex: 1; border-radius: .35em; overflow: hidden; }
+  .ph-foot { display: flex; align-items: center; gap: .3em; margin: .5em 0; }
+  .ph-foot i { width: .6em; height: .6em; border-radius: 50%; background: var(--navy); } .ph-foot span { flex: 1; height: .22em; background: #d7dce5; border-radius: 1em; }
+  .ph-bar { display: flex; justify-content: space-around; } .ph-bar b { width: .45em; height: .45em; border: 1px solid #b5bdca; border-radius: 50%; }
+</style>

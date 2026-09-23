@@ -1,0 +1,62 @@
+---
+import { site } from '../data/site';
+import Icon from './Icon.astro';
+import Laptop from './mockups/Laptop.astro';
+import Phone from './mockups/Phone.astro';
+import CvSheet from './mockups/CvSheet.astro';
+const { hero } = site;
+---
+<section class="hero" id="inicio">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow">{hero.eyebrow}</p>
+      <h1><span>{hero.title[0]}</span> <span>{hero.title[1]}</span></h1>
+      <p class="hero__lead">{hero.lead}</p>
+      <p class="hero__list">
+        {hero.highlights.map((h, i) => (<>{i > 0 && <span aria-hidden="true"> · </span>}<span>{h}</span></>))}
+      </p>
+      <a class="btn btn--caps" href="#contacto">{hero.cta} <Icon name="arrow" size={20} /></a>
+      <ul class="hero__badges">
+        {hero.badges.map((b) => <li><Icon name={b.icon} size={17} />{b.text}</li>)}
+      </ul>
+    </div>
+
+    <div class="hero__art">
+      <div class="art__laptop"><Laptop /></div>
+      <div class="art__cv"><CvSheet /></div>
+      <div class="art__phone"><Phone /></div>
+      <p class="art__note">
+        {hero.note}
+        <svg viewBox="0 0 30 20" aria-hidden="true"><path d="M2 16c8-2 16-7 24-13M20 3h6v6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" /></svg>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { position: relative; overflow: hidden; padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(3rem, 7vw, 5rem); }
+  .hero::before { content: ''; position: absolute; width: 58rem; aspect-ratio: 1; border-radius: 50%; background: var(--bg-2); right: -26rem; top: -4rem; z-index: -1; }
+  .hero__grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 2rem; align-items: center; }
+  h1 { font-size: clamp(2.2rem, 4.3vw, 3.4rem); margin: 0 0 1.1rem; color: var(--ink); }
+  h1 span { display: block; white-space: nowrap; }
+  .hero__lead { font-size: 1.1rem; color: var(--muted); max-width: 30rem; }
+  .hero__list { font-weight: 600; font-size: .95rem; margin-bottom: 1.8rem; }
+  .hero__badges { list-style: none; padding: 0; margin: 1.6rem 0 0; display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; font-size: .82rem; }
+  .hero__badges li { display: inline-flex; align-items: center; gap: .45rem; }
+  .hero__badges li + li { border-left: 1px solid var(--line); padding-left: 1.2rem; }
+
+  /* Composición de mockups: todo escala con font-size */
+  .hero__art { position: relative; font-size: clamp(9px, 1.25vw, 15.5px); height: 30em; }
+  .art__laptop { position: absolute; right: 0; top: 1em; font-size: 1.05em; }
+  .art__cv { position: absolute; left: 1em; top: 10.5em; font-size: 1.3em; z-index: 2; }
+  .art__phone { position: absolute; right: .5em; top: 11em; font-size: 1.3em; z-index: 3; }
+  .art__note { position: absolute; left: 13.8em; top: 14.6em; margin: 0; font-family: var(--font-hand); font-size: 1.55em; line-height: 1; color: var(--accent); width: 6.5em; transform: rotate(-6deg); z-index: 3; display: flex; align-items: flex-start; gap: .2em; }
+  .art__note svg { width: 1.2em; flex: none; margin-top: -.4em; }
+
+  @media (max-width: 900px) {
+    .hero__grid { grid-template-columns: 1fr; }
+    .hero__art { font-size: clamp(7px, 2.3vw, 13px); width: 38em; max-width: 100%; margin-inline: auto; }
+    .hero__badges li + li { border-left: 0; padding-left: 0; }
+    .hero::before { width: 40rem; right: -20rem; top: auto; bottom: -12rem; }
+  }
+</style>

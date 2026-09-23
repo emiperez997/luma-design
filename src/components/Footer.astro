@@ -1,0 +1,103 @@
+---
+import { site } from "../data/site";
+import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
+const socials = [
+  { icon: "instagram", href: site.contact.instagram, label: "Instagram" },
+  { icon: "whatsapp", href: site.contact.whatsapp, label: "WhatsApp" },
+] as const;
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <Logo size="lg" />
+      <nav aria-label="Pie de página">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#trabajos">Trabajos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <ul class="footer__social">
+        {
+          socials.map((s) => (
+            <li>
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener"
+                aria-label={s.label}
+              >
+                <Icon name={s.icon} size={22} />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="footer__bottom">
+      <p>© {site.year} {site.name}. Todos los derechos reservados.</p>
+      <p>{site.footer.note}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--bg);
+    padding: 1rem 0 2rem;
+    font-size: 0.8rem;
+  }
+  .footer__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding-bottom: 2rem;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--muted);
+  }
+  nav a:hover {
+    color: var(--ink);
+  }
+  .footer__social {
+    gap: 1.1rem;
+  }
+  .footer__social a {
+    color: var(--ink);
+    display: block;
+  }
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    color: var(--muted);
+    font-size: 0.72rem;
+  }
+  .footer__bottom p {
+    margin: 0;
+  }
+  @media (max-width: 700px) {
+    .footer__top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    ul {
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+    }
+  }
+</style>

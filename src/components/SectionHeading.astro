@@ -1,0 +1,36 @@
+---
+/** Encabezado numerado de sección: "02 — SERVICIOS" + título */
+interface Props { number: string; eyebrow?: string; title: string; lead?: string; tone?: 'light' | 'dark'; id?: string }
+const { number, eyebrow, title, lead, tone = 'light', id } = Astro.props;
+---
+<header class:list={['sh', `sh--${tone}`]}>
+  <div class="sh__marker">
+    <span class="sh__num">{number}</span>
+    <span class="sh__rule" aria-hidden="true"></span>
+    {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+  </div>
+  <div class="sh__body">
+    <h2 class="sh__title" id={id}>{title}</h2>
+    {lead && <p class="sh__lead">{lead}</p>}
+  </div>
+</header>
+
+<style>
+  .sh { display: grid; grid-template-columns: auto 1fr; column-gap: 1rem; align-items: start; }
+  .sh__marker { display: flex; align-items: center; gap: .9rem; padding-top: .55rem; }
+  .sh__num { font-family: var(--font-serif); font-size: 1.35rem; color: var(--ink); }
+  .sh__rule { width: 1.5rem; height: 1px; background: currentColor; opacity: .35; }
+  .sh__marker .eyebrow { margin: 0; }
+  .sh__title { font-size: clamp(2rem, 3.6vw, 2.6rem); margin: 0; }
+  .sh__lead { margin: .4rem 0 0; color: var(--muted); font-size: 1.05rem; }
+  .sh--dark .sh__num, .sh--dark .sh__title { color: #fff; }
+  .sh--dark .sh__lead { color: #fff; font-weight: 500; }
+  .sh--dark .sh__rule { color: #fff; }
+  /* cuando hay eyebrow, el título baja a una fila propia (como en "Servicios") */
+  .sh:has(.eyebrow) { grid-template-columns: 1fr; }
+  .sh:has(.eyebrow) .sh__body { padding-left: 4.2rem; margin-top: .6rem; }
+  @media (max-width: 640px) {
+    .sh { grid-template-columns: 1fr; }
+    .sh__body, .sh:has(.eyebrow) .sh__body { padding-left: 0; margin-top: .5rem; }
+  }
+</style>
