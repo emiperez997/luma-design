@@ -5,18 +5,6 @@
  */
 import type { IconName } from '../components/Icon.astro';
 
-export type MockupKind = 'cv' | 'laptop' | 'flyer' | 'phone';
-
-export interface Work {
-  title: string;
-  meta: string;
-  /** Mockup dibujado en CSS. Se ignora si pasás `image`. */
-  mockup?: MockupKind;
-  /** Ruta a una imagen real en /public, ej: '/trabajos/cafe.jpg' */
-  image?: string;
-  href?: string;
-}
-
 const whatsappNumber = '5491134853029'; // formato internacional, sin + ni espacios
 const whatsappText = 'Hola Luma! Quería consultarles por un proyecto.';
 
@@ -36,7 +24,7 @@ export const site = {
   nav: [
     { label: 'Inicio', href: '#inicio' },
     { label: 'Servicios', href: '#servicios' },
-    { label: 'Trabajos', href: '#trabajos' },
+    { label: 'Por qué Luma', href: '#por-que-luma' },
     { label: 'Cómo trabajamos', href: '#proceso' },
   ],
 
@@ -75,18 +63,6 @@ export const site = {
       { icon: 'palette', title: 'Diseño con criterio', text: 'Soluciones que combinan estética y funcionalidad.' },
       { icon: 'heart', title: 'Compromiso real', text: 'Tu proyecto también nos importa.' },
     ] satisfies { icon: IconName; title: string; text: string }[],
-  },
-
-  works: {
-    title: 'Trabajos',
-    lead: 'Algunos ejemplos de lo que podemos lograr juntos.',
-    moreLabel: 'Ver más ejemplos',
-    items: [
-      { title: 'CV', meta: 'Martina Juárez · Diseño UX/UI', mockup: 'cv' },
-      { title: 'Landing page', meta: 'Proyecto conceptual · Luma', mockup: 'laptop' },
-      { title: 'Flyer', meta: 'Proyecto conceptual · Café Local', mockup: 'flyer' },
-      { title: 'Contenido para redes', meta: 'Proyecto conceptual · Luma', mockup: 'phone' }
-    ] as Work[],
   },
 
   process: {
