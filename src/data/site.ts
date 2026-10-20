@@ -69,7 +69,7 @@ export const site = {
     title: 'Cómo trabajamos',
     lead: 'Un proceso simple y claro, de principio a fin.',
     steps: [
-      { icon: 'message', title: 'Nos contás tu idea', text: 'Nos escribís por DM, WhatsApp o el formulario.' },
+      { icon: 'message', title: 'Nos contás tu idea', text: 'Nos escribís por DM o WhatsApp con lo que necesitás.' },
       { icon: 'file', title: 'Te enviamos una propuesta', text: 'Definimos alcance, tiempos y valores.' },
       { icon: 'palette', title: 'Diseñamos', text: 'Trabajamos en tu proyecto con comunicación constante.' },
       { icon: 'send', title: 'Entregamos', text: 'Recibís los archivos listos para usar.' },
